@@ -85,6 +85,8 @@ public class GUI implements ActionListener {
         menuFile.add(itemSaveas);
         
         itemExit = new JMenuItem("Exit");
+        itemExit.addActionListener(this);
+        itemExit.setActionCommand("Exit");
         menuFile.add(itemExit);
     }
 
@@ -97,6 +99,7 @@ public class GUI implements ActionListener {
             case "Open": file.Open(); break;
             case "Save": file.Save(); break;
             case "Save As": file.Saveas(); break;
+            case "Exit": file.Exit(); break;
         }
     }
 }

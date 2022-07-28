@@ -83,6 +83,10 @@ public class FileFunction {
             System.out.println("SOMETHING WRONG!");
         }
     }
+    
+    public void Exit() {
+        System.exit(0);
+    }
     }
     
         
