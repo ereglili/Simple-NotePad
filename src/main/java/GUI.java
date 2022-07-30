@@ -41,6 +41,9 @@ public class GUI implements ActionListener {
         createFileMenu();
         createFormatMenu();
         
+        format.selectedfont = "Arial";
+        format.createfont(16);
+        format.wordwrap();
         window.setVisible(true);
         
     }
@@ -112,9 +115,9 @@ public class GUI implements ActionListener {
         itemFontArial.setActionCommand("Arial");
         menuFont.add(itemFontArial);
         
-        itemFontCSMS = new JMenuItem("Conic Sans MS");
+        itemFontCSMS = new JMenuItem("Comic Sans MS");
         itemFontCSMS.addActionListener(this);
-        itemFontCSMS.setActionCommand("Conic Sans MS");
+        itemFontCSMS.setActionCommand("Comic Sans MS");
         menuFont.add(itemFontCSMS);
         
         itemFontTNR = new JMenuItem("Times New Roman");
@@ -168,6 +171,15 @@ public class GUI implements ActionListener {
             case "Save As": file.Saveas(); break;
             case "Exit": file.Exit(); break;
             case "Word Wrap": format.wordwrap(); break;
+            case "Arial": format.setfont(command); break;
+            case "Times New Roman": format.setfont(command); break;
+            case "Comic Sans MS": format.setfont(command); break;
+            case "size8": format.createfont(8); break;
+            case "size12": format.createfont(12); break;
+            case "size16": format.createfont(16); break;
+            case "size20": format.createfont(20); break;
+            case "size24": format.createfont(24); break;
+            case "size28": format.createfont(28); break;
         }
     }
 }
