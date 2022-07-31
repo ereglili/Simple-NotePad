@@ -1,4 +1,9 @@
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 public class EditFunction {
     GUI gui;
     public EditFunction(GUI gui){
@@ -16,5 +21,10 @@ public class EditFunction {
     }
     public void selectall(){
         gui.textArea.selectAll();
+    }
+    public void date(){
+        Date d = new Date();
+        DateFormat df = new SimpleDateFormat(" kk:mm  dd.MM.yyyy");
+        gui.textArea.setText(gui.textArea.getText()+df.format(d));
     }
 }

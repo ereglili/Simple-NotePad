@@ -36,7 +36,7 @@ public class GUI implements ActionListener {
     JMenu menuFont,menuFontSize;
     
     
-    JMenuItem itemCopy,itemPaste,itemCut,itemSelectall;
+    JMenuItem itemCopy,itemPaste,itemCut,itemSelectall,itemDate;
     
     FileFunction file = new FileFunction(this);
     FormatFunction format = new FormatFunction(this);   
@@ -193,6 +193,11 @@ public class GUI implements ActionListener {
         itemCut.addActionListener(this);
         itemCut.setActionCommand("Cut");
         menuEdit.add(itemCut);
+       
+        itemDate = new JMenuItem("Clock/Date");
+        itemDate.addActionListener(this);
+        itemDate.setActionCommand("Date");
+        menuEdit.add(itemDate);
         
         
     
@@ -222,6 +227,7 @@ public class GUI implements ActionListener {
             case "Cut": edit.cut(); break;
             case "Paste": edit.paste(); break;
             case "Select All": edit.selectall(); break;
+            case "Date": edit.date(); break;
         }
     }
 }
