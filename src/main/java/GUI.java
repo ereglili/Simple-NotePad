@@ -1,14 +1,20 @@
 
+import java.awt.Color;
 import java.awt.ScrollPane;
+import static java.awt.SystemColor.menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
 
 
 public class GUI implements ActionListener {
@@ -18,6 +24,8 @@ public class GUI implements ActionListener {
     JTextArea textArea;
     JScrollPane scrollPane;
     boolean wordwrapon = false;
+    boolean Copyon = false;
+    
     
     JMenuBar menuBar;
     JMenu menuFile,menuEdit,menuFormat;
@@ -27,8 +35,12 @@ public class GUI implements ActionListener {
     JMenuItem itemWrap, itemFontArial,itemFontCSMS,itemFontTNR,itemFontSize8,itemFontSize12,itemFontSize16,itemFontSize20,itemFontSize24,itemFontSize28;
     JMenu menuFont,menuFontSize;
     
+    
+    JMenuItem itemCopy,itemPaste,itemCut;
+    
     FileFunction file = new FileFunction(this);
-    FormatFunction format = new FormatFunction(this);
+    FormatFunction format = new FormatFunction(this);   
+    EditFunction edit = new EditFunction(this);
     public static void main(String[] args) {
         
         new GUI();
@@ -40,6 +52,8 @@ public class GUI implements ActionListener {
         createMenuBar();
         createFileMenu();
         createFormatMenu();
+        createEditMenu();
+        
         
         format.selectedfont = "Arial";
         format.createfont(16);
@@ -158,6 +172,25 @@ public class GUI implements ActionListener {
         itemFontSize28.setActionCommand("size28");
         menuFontSize.add(itemFontSize28);
         
+    }  
+    public void createEditMenu(){
+        itemCopy = new JMenuItem("Copy");
+        itemCopy.addActionListener(this);
+        itemCopy.setActionCommand("Copy");
+        menuEdit.add(itemCopy);
+        
+        itemPaste = new JMenuItem("Paste");
+        itemPaste.addActionListener(this);
+        itemPaste.setActionCommand("Paste");
+        menuEdit.add(itemPaste);
+        
+        itemCut = new JMenuItem("Cut");
+        itemCut.addActionListener(this);
+        itemCut.setActionCommand("Cut");
+        menuEdit.add(itemCut);
+        
+        
+    
     }
 
     @Override
@@ -180,6 +213,9 @@ public class GUI implements ActionListener {
             case "size20": format.createfont(20); break;
             case "size24": format.createfont(24); break;
             case "size28": format.createfont(28); break;
+            case "Copy": edit.copy(); break;
+            case "Cut": edit.cut(); break;
+            case "Paste": edit.paste(); break;
         }
     }
 }
