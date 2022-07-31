@@ -14,4 +14,7 @@ public class EditFunction {
     public void paste(){
         gui.textArea.paste();
     }
+    public void selectall(){
+        gui.textArea.selectAll();
+    }
 }
